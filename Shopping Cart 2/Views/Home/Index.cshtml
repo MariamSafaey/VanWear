@@ -1,0 +1,198 @@
+﻿@model IEnumerable<Item>
+
+@{
+    ViewData["Titles"] = "Home Page";
+
+}
+<!-- Masthead-->
+<div class="bg-dark text-secondary     text-center hero">
+    <div class="container py-5">
+        <h1 class="display-5 fw-bold text-white">Welcome To VANWEAR!</h1>
+        <div class="  mx-au">
+            <p class="fs-5 mb-4" style="color:white">It's Nice To Meet You</p>
+            <div ="d-grid gap-2 d-classsm-flex justify-content-sm-center">
+                <div class="pb-3">
+                    <a class="btn btn-dark btn-l k text-uppercase " style="border-radius:25px" href="#services">Tell Me More</a>
+                </div>
+                <div>
+                    <a class="btn btn-dark btn-l text-uppercase" style="border-radius:25px" asp-controller="Home" asp-action="Products">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Services-->
+<section class="page-section bg-light" id="services">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Services</h2>
+            <h3 class="section-subheading text-muted">We are happy to help you choose your outfit!</h3>
+        </div>
+       
+
+
+
+        <div class="row text-center">
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <svg class="svg-inline--fa fa-circle fa-stack-2x" style="color: black;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512z" />
+                    </svg>
+                    <svg class="svg-inline--fa fa-shirt fa-stack-1x" style="color: white;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shirt" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M256 0c-35.3 0-64 28.7-64 64v14.5L122.9 98.8c-20.5 5.1-37.9 18.3-47.6 36.4l-18.4 34.3c-4.8 8.9-6.9 18.9-6.4 29V480c0 17.7 14.3 32 32 32H192V320h128v192h109.6c17.7 0 32-14.3 32-32V198.5c.5-10.1-1.6-20.1-6.4-29l-18.4-34.3c-9.7-18.1-27.1-31.3-47.6-36.4L320 78.5V64c0-35.3-28.7-64-64-64z" />
+                    </svg>
+                </span>
+                <h4 class="my-3">Trendy Fashion</h4>
+                <p>Discover the latest styles and seasonal collections. Stay ahead of the fashion curve with our handpicked trends.</p>
+            </div>
+
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <svg class="svg-inline--fa fa-circle fa-stack-2x" style="color: black;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512z" />
+                    </svg>
+                    <svg class="svg-inline--fa fa-truck-fast fa-stack-1x" style="color: white;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="truck-fast" viewBox="0 0 640 512">
+                        <path fill="currentColor" d="M256 0c17.7 0 32 14.3 32 32V96H576c35.3 0 64 28.7 64 64v112h-48c-8.8 0-16 7.2-16 16v32H416c-35.3 0-64 28.7-64 64v64H32c-17.7 0-32-14.3-32-32V32C0 14.3 14.3 0 32 0H256zM512 448a64 64 0 1 0 0-128 64 64 0 1 0 0 128zM128 384a64 64 0 1 0 0 128 64 64 0 1 0 0-128z" />
+                    </svg>
+                </span>
+                <h4 class="my-3">Fast Delivery</h4>
+                <p>Enjoy quick shipping and timely delivery across all regions. Get your outfits when you need them most.</p>
+            </div>
+
+            <div class="col-md-4">
+                <span class="fa-stack fa-4x">
+                    <svg class="svg-inline--fa fa-circle fa-stack-2x" style="color: black;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512z" />
+                    </svg>
+                    <svg class="svg-inline--fa fa-rotate-left fa-stack-1x" style="color: white;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="rotate-left" viewBox="0 0 512 512">
+                        <path fill="currentColor" d="M500.3 34.9c12.5 12.5 12.5 32.8 0 45.3L384.9 195.6c-12.5 12.5-32.8 12.5-45.3 0L271 127.1c-36.5 6.5-70.4 24.4-97 51s-44.5 60.5-51 97c-1.7 9.4-10 16-19.5 16c-10.9 0-19.9-8.8-18.4-19.6c8.4-56.8 36.1-109 78.5-151.4s94.6-70.1 151.4-78.5c10.8-1.6 19.6 7.5 19.6 18.4c0 9.5-6.6 17.8-16 19.5z" />
+                    </svg>
+                </span>
+                <h4 class="my-3">Easy Returns</h4>
+                <p>Wrong size or changed your mind? No worries — enjoy hassle-free returns within 14 days on all clothing items.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About-->
+<section class="page-section bg-light" id="about">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">About</h2>
+            <h3 class="section-subheading text-muted">information about us</h3>
+        </div>
+
+
+
+        <ul class="timeline">
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Blog Posts (Fashion & Lifestyle)</h4>
+                        <h4 class="subheading">Our Humble Beginnings</h4>
+                    </div>
+                    <ul>
+                        <li>Seasonal Trends – "Top Summer Outfits for 2025"</li>
+                        <li>Styling Tips – "How to Layer Clothes Like a Pro"</li>
+                        <li>Occasion-Based Guides – "Best Outfits for a Job Interview"</li>
+
+                        <li>Sustainability – "Eco-Friendly Fabrics You Should Know"</li>
+
+
+                    </ul>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4> Customer-Centric Content</h4>
+                        <h4 class="subheading">An Agency is Born</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>
+                                Reviews & Testimonials – Showcase real customer photos.
+                            </li>
+                            <li>
+
+                                FAQ Section – Shipping, returns, payment methods.
+                            </li>
+                            <li>
+                                Size/ Fit Guides – Help customers choose the right size.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Promotional Content</h4>
+                        <h4 class="subheading">Transition to Full Service</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>New Arrivals – Highlight fresh collections.</li>
+                            <li>Discounts & Sales – "Flash Sale: 50% Off This Weekend!"</li>
+                            <li>Limited Editions – "Exclusive Drops – Get Them Before They’re Gone!"</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="..." /></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4>Interactive Content</h4>
+                        <h4 class="subheading">Phase Two Expansion</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Lookbooks – "Mix & Match These Pieces for a Chic Look."</li>
+                            <li>
+                                Detailed, unique descriptions for each item (fabric, fit, care instructions).
+
+                            </li>
+                            <li>
+                                Size guides with measurements (avoid returns due to sizing issues).
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+</section>
+
+
+
+<!-- Clients-->
+<div class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg" alt="..." aria-label="Microsoft Logo" /></a>
+            </div>
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
+            </div>
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
+            </div>
+            <div class="col-md-3 col-sm-6 my-3">
+                <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</section>

@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Promote User to Admin";
+}
+
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+
+    @if (TempData["msg"] != null)
+    {
+        <div class="alert alert-info">@TempData["msg"]</div>
+    }
+
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="PromoteToAdmin" method="post">
+                <div class="form-group">
+                    <label for="userEmail">User Email:</label>
+                    <input type="email" class="form-control" id="userEmail" name="userEmail" required />
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Promote to Admin</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="ListAdmins" class="btn btn-secondary">View Current Admins</a>
+        <a asp-action="Dashboard" class="btn btn-outline-primary ml-2">Back to Dashboard</a>
+    </div>
+</div>

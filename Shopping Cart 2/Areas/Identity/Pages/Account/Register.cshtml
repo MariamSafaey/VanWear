@@ -1,0 +1,129 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<head>
+    <link href="~/css/register.css" rel="stylesheet" />
+</head>
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="form-container">
+    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+        <h2 class="mb-4 text-center text-secondary">Create a new account</h2>
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+        <!-- Name -->
+        <div class="form-floating mb-3">
+            <input asp-for="Input.Name" class="form-control" placeholder="Full Name" />
+            <label asp-for="Input.Name">Name</label>
+            <span asp-validation-for="Input.Name" class="text-danger"></span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-floating mb-3">
+            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+            <label asp-for="Input.Email">Email</label>
+            <span asp-validation-for="Input.Email" class="text-danger"></span>
+        </div>
+		<!-- Phone Number -->
+        <div class="form-group">
+            <label asp-for="Input.PhoneNumber"></label>
+            <input asp-for="Input.PhoneNumber" class="form-control" />
+            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <!-- City -->
+        <div class="form-group mb-3">
+            <label asp-for="Input.City"></label>
+            <select asp-for="Input.City" class="form-control" id="cityDropdown" onchange="updateStreets()">
+                <option value="">-- Select City --</option>
+                <option value="Cairo">Cairo</option>
+                <option value="Alexandria">Alexandria</option>
+                <option value="Assiut">Assiut</option>
+                <option value="Giza">Giza</option>
+            </select>
+            <span asp-validation-for="Input.City" class="text-danger"></span>
+        </div>
+
+        <!-- Street -->
+        <div class="form-group mb-3">
+            <label asp-for="Input.Street"></label>
+            <select asp-for="Input.Street" class="form-control" id="streetDropdown">
+                <option value="">-- Select Street --</option>
+            </select>
+            <span asp-validation-for="Input.Street" class="text-danger"></span>
+        </div>
+        
+        <!-- Profile Picture Upload -->
+        <div class="mb-3">
+            <label asp-for="Input.ProfilePicFile" class="form-label">Profile Picture</label>
+            <input asp-for="Input.ProfilePicFile" type="file" class="form-control" accept="image/*" onchange="previewImage(event)" />
+            <span asp-validation-for="Input.ProfilePicFile" class="text-danger"></span>
+        </div>
+
+        <!-- Preview selected image -->
+        <div class="mb-3 text-center">
+            <img id="profilePicPreview" src="#" alt="Profile Preview" />
+        </div>
+
+        <!-- Password -->
+        <div class="form-floating mb-3">
+            <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+            <label asp-for="Input.Password">Password</label>
+            <span asp-validation-for="Input.Password" class="text-danger"></span>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-floating mb-3">
+            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+            <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <!-- Submit -->
+        <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        const streetsByCity = {
+            Cairo: ["Nasr City", "Heliopolis", "Maadi", "Zamalek"],
+            Alexandria: ["Stanley", "Gleem", "Sidi Gaber", "Smouha"],
+            Assiut: ["El Gomhoreya St.", "El Thawra St.", "El Geish St.", "El Azhar St."],
+            Giza: ["Dokki", "Mohandessin", "Faisal", "Haram"]
+        };
+
+        function updateStreets() {
+            const cityDropdown = document.getElementById("cityDropdown");
+            const streetDropdown = document.getElementById("streetDropdown");
+            const selectedCity = cityDropdown.value;
+
+            streetDropdown.innerHTML = '<option value="">-- Select Street --</option>';
+
+            if (selectedCity && streetsByCity[selectedCity]) {
+                streetsByCity[selectedCity].forEach(street => {
+                    const option = document.createElement("option");
+                    option.value = street;
+                    option.text = street;
+                    streetDropdown.add(option);
+                });
+            }
+        }
+
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const output = document.getElementById('profilePicPreview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+}

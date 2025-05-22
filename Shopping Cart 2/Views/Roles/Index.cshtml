@@ -1,0 +1,100 @@
+﻿@model IEnumerable<ApplicationUser>
+
+@{
+    ViewData["Title"] = "Users Management";
+    Layout = "_AdminLayout";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">System Users</h2>
+        </div>
+    @*     <div class="col-6 text-end"> *@
+    @*         <a asp-action="CreateFirstAdmin" asp-controller="AdminOperations" class="btn btn-primary"> *@
+    @*             <i class="bi bi-plus-circle"></i> &nbsp; Create Admin *@
+    @*         </a> *@
+    @*     </div> *@
+    @* </div> *@
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show mt-3">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show mt-3">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+
+    <table class="table table-hover mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                    <th>Phone Number</th>
+
+                <th>Email</th>
+                <th>Join Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Name</td>
+						<td>@user.PhoneNumber</td>
+                    <td>@user.Email</td>
+                    <td>@user.DateOfJoin.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if (user.EmailConfirmed)
+                        {
+                            <span class="badge bg-success">Verified</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning">Pending</span>
+                        }
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-controller="Roles" asp-action="AddRoles" asp-route-userId="@user.Id"
+                               class="btn btn-sm btn-outline-primary" title="Manage Roles">
+                                <i class="bi bi-person-gear"></i>
+                            </a>
+
+                            <form asp-action="DeleteUser" asp-controller="AdminOperations" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@user.Id" />
+                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                        onclick="return confirm('Are you sure you want to delete @user.UserName?')"
+                                        title="Delete User">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script>
+        // Auto-dismiss alerts after 5 seconds
+        $(document).ready(function(){
+            setTimeout(function(){
+                $('.alert').alert('close');
+            }, 5000);
+        });
+    </script>
+}

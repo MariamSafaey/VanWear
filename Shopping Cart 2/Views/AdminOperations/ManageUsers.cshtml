@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Shopping_Cart_2.Controllers.UserWithRolesViewModel>
+@{
+    ViewData["Title"] = "Users Management";
+    Layout = "_AdminLayout";
+}
+
+<div class="container p-3">
+    <!-- ... (keep your existing header and alert code) ... -->
+
+    <table class="table table-hover mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Join Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr id="user-row-@user.User.Id">
+                    <td>@user.User.Id</td>
+                    <td>@user.User.UserName</td>
+                    <td>@user.User.Email</td>
+                    <td>@string.Join(", ", user.Roles)</td>
+                    <td>@user.User.DateOfJoin.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if (user.User.EmailConfirmed)
+                        {
+                            <span class="badge bg-success">Verified</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning">Pending</span>
+                        }
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <!-- Toggle Admin Role Button -->
+                            <form asp-action="ToggleAdminRole" method="post" class="d-inline">
+                                <input type="hidden" name="id" value="@user.User.Id" />
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-sm @(user.Roles.Contains("Admin") ? "btn-warning" : "btn-info")"
+                                        title="@(user.Roles.Contains("Admin") ? "Remove Admin" : "Make Admin")">
+                                    <i class="bi @(user.Roles.Contains("Admin") ? "bi-person-dash" : "bi-person-plus")"></i>
+                                </button>
+                            </form>
+
+                            <!-- Delete Button with AJAX -->
+                            <button type="button" class="btn btn-sm btn-outline-danger delete-user-btn"
+                                    data-userid="@user.User.Id"
+                                    data-username="@user.User.UserName"
+                                    title="Delete User">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        // Auto-dismiss alerts
+        $(document).ready(function(){
+            setTimeout(function(){
+                $('.alert').alert('close');
+            }, 5000);
+
+            // AJAX delete functionality
+            $('.delete-user-btn').click(function() {
+                var userId = $(this).data('userid');
+                var username = $(this).data('username');
+
+                if (confirm('Are you sure you want to delete ' + username + '?')) {
+                    var row = $('#user-row-' + userId);
+
+                    $.ajax({
+                        url: '@Url.Action("DeleteUser", "AdminOperations")',
+                        type: 'POST',
+                        data: {
+                            id: userId,
+                            __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                row.fadeOut(400, function() {
+                                    $(this).remove();
+                                });
+                                // Show success message
+                                showAlert('User deleted successfully', 'success');
+                            } else {
+                                showAlert('Error: ' + response.message, 'danger');
+                            }
+                        },
+                        error: function() {
+                            showAlert('An error occurred while deleting the user', 'danger');
+                        }
+                    });
+                }
+            });
+
+            function showAlert(message, type) {
+                var alertHtml = `<div class="alert alert-${type} alert-dismissible fade show mt-3">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+
+                $('.container').prepend(alertHtml);
+                setTimeout(function() {
+                    $('.alert').alert('close');
+                }, 5000);
+            }
+        });
+    </script>
+}

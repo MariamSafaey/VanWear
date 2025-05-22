@@ -1,0 +1,47 @@
+﻿F@model Shopping_Cart_2.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<h2 class="mb-4">Edit Profile</h2>
+
+<form asp-action="EditProfile" method="post" enctype="multipart/form-data">
+    <div class="form-group mb-3">
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" readonly />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="PhoneNumber">Phone Number</label>
+        <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="City">City</label>
+        <input type="text" class="form-control" id="City" name="City" value="@Model.City" />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="Street">Street</label>
+        <input type="text" class="form-control" id="Street" name="Street" value="@Model.Street" />
+    </div>
+
+    <div class="form-group mb-4">
+        <label for="ProfilePic">Profile Picture</label>
+        <input type="file" class="form-control" id="ProfilePic" name="profilePic" />
+        @if (!string.IsNullOrEmpty(Model.ProfilePic))
+        {
+            <div class="mt-2">
+                <img src="@Model.ProfilePic" alt="Current Profile Picture" width="150" height="150" class="rounded shadow" />
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>

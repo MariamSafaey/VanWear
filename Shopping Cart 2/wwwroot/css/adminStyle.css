@@ -1,0 +1,117 @@
+﻿/* Reset and Base Styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+* {
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #486888 #f1f1f1;
+}
+
+    /* Scrollbar Styling */
+    *::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: #486888;
+        border-radius: 10px;
+        border: 2px solid #f1f1f1;
+    }
+
+        *::-webkit-scrollbar-thumb:hover {
+            background-color: #3b5870;
+        }
+
+/* Layout */
+.main-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidenav {
+    width: 250px;
+    background-color: #2c3e50;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+    .sidenav a,
+    .navigation-link {
+        color: #ecf0f1;
+        text-decoration: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+        display: block;
+    }
+
+        .sidenav a:hover,
+        .navigation-link:hover {
+            background-color: #486888;
+            color: #ffffff;
+        }
+
+/* Right Panel */
+.right-panel {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    overflow-y: auto;
+}
+
+/* Top Navbar */
+.nav-bar {
+    background-color: #486888;
+    color: #ffffff;
+    padding: 15px 25px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Navbar Actions */
+.nav-actions {
+    display: flex;
+    gap: 10px;
+}
+
+    .nav-actions button,
+    .nav-actions a {
+        border: none;
+        background: none;
+        color: inherit;
+        cursor: pointer;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+        .nav-actions button:hover,
+        .nav-actions a:hover {
+            color: #dcdcdc;
+        }
+
+/* Content Area */
+.content {
+    flex-grow: 1;
+    padding: 30px;
+}

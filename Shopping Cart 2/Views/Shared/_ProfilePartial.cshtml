@@ -1,0 +1,56 @@
+﻿@inject UserManager<ApplicationUser> UserManager
+@using Microsoft.AspNetCore.Identity
+
+@{
+    var user = await UserManager.GetUserAsync(User);
+}
+
+@if (user != null)
+{
+    <div class="container mt-3">
+        <h2>User Profile</h2>
+
+        <div class="row mb-4">
+            <label class="fw-bold">Name:</label>
+            <span>@user.Name</span>
+        </div>
+
+        <div class="row mb-4">
+            <label class="fw-bold">Email:</label>
+            <span>@user.Email</span>
+        </div>
+
+        <div class="row mb-4">
+            <label class="fw-bold">Mobile Number:</label>
+            <span>@user.PhoneNumber</span>
+        </div>
+
+        <div class="row mb-4">
+            <label class="fw-bold">Address:</label>
+            <span>@user.City</span>
+        </div>
+
+        <div class="row mb-4">
+            <label class="fw-bold">Street:</label>
+            <span>@user.Street</span>
+        </div>
+
+        <div class="row mb-4">
+            <label class="fw-bold">Profile Picture:</label>
+            @if (!string.IsNullOrEmpty(user.ProfilePic))
+            {
+                <img src="@user.ProfilePic" alt="Profile Picture" class="img-thumbnail" width="150" />
+            }
+            else
+            {
+                <span>No profile picture</span>
+            }
+        </div>
+
+        <a href="@Url.Action("EditProfile", "Profile")" class="btn btn-primary">Edit Profile</a>
+    </div>
+}
+else
+{
+    <span>Welcome, guest!</span>
+}

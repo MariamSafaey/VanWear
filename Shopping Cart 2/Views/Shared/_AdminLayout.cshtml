@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/3.0.2/css/responsive.bootstrap5.min.css" />
+
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="~/lib/sweetalert2/sweetalert2.min.css" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="~/Shopping_Cart_2.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/adminstyle.css" />
+
+
+</head>
+<body>
+    <div class="main-container">
+
+        <!-- Sidebar -->
+        <nav class="sidenav">
+            <h4 class="text-center text-white mb-4">Admin Panel</h4>
+            <a class="navigation-link" asp-controller="Home" asp-action="Index">🏠 Back To Home</a>
+            <a class="navigation-link" asp-controller="AdminOperations" asp-action="Dashboard">📊 Dashboard</a>
+            <a class="navigation-link" asp-controller="Roles" asp-action="Index">🔑 User Roles</a>
+            <a class="navigation-link" asp-area="" asp-controller="AdminOperations" asp-action="GetAllItems">🛒 Manage Products</a>
+            <a class="navigation-link" asp-controller="AdminOperations" asp-action="AllOrders">📦 Orders</a>
+        </nav>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+            <div class="content container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/sweetalert2/sweetalert2.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/3.0.2/js/dataTables.responsive.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/js/demo/chart-area-demo.js"></script>
+    <script src="~/js/demo/chart-pie-demo.js"></script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

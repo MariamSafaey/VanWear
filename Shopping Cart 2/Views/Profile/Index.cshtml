@@ -1,0 +1,32 @@
+﻿@model Shopping_Cart_2.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container mt-5">
+    <h2>Account Information</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="@Model.ProfilePic" alt="Profile Picture" class="img-thumbnail" style="width: 100%; max-width: 250px;" />
+        </div>
+        <div class="col-md-8">
+            <dl class="row">
+                <dt class="col-sm-3">Name</dt>
+                <dd class="col-sm-9">@Model.Name</dd>
+
+                <dt class="col-sm-3">Email</dt>
+                <dd class="col-sm-9">@Model.Email</dd>
+
+                <dt class="col-sm-3">Phone Number</dt>
+                <dd class="col-sm-9">@Model.PhoneNumber</dd>
+
+                <dt class="col-sm-3">City</dt>
+                <dd class="col-sm-9">@Model.City</dd>
+
+                <dt class="col-sm-3">Street</dt>
+                <dd class="col-sm-9">@Model.Street</dd>
+            </dl>
+        </div>
+    </div>
+</div>

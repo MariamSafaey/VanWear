@@ -1,0 +1,51 @@
+﻿/* register.css */
+
+body {
+    background: linear-gradient(to right, #f2f2f2, #ffffff);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #000000;
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+.form-container {
+    max-width: 550px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.1);
+}
+
+.form-floating label,
+label {
+    color: #6c757d;
+}
+
+.btn-primary {
+    background-color: #000000;
+    border: none;
+}
+
+    .btn-primary:hover {
+        background-color: #333333;
+    }
+
+.form-control:focus {
+    border-color: #000000;
+    box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+}
+
+#profilePicPreview {
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    display: none;
+    max-height: 200px;
+    object-fit: contain;
+    margin-top: 10px;
+}
